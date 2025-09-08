@@ -14,3 +14,5 @@ identification system, potentially including how it identifies key segments part
 in a trend (e.g., Gen Z, Millennials) and how it might indicate when a trend starts to
 decay.
 3. Recorded presentation
+
+## Proposed Solution: GooberAI
