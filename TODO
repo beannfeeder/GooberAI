@@ -1,0 +1,13 @@
+# TODO
+
+ALL MEMBERS:
+https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
+
+install Git LFS on your repo following the guide above ^^
+
+
+
+1. suggest a model (maybe allow customization of coefficient?) for variables that produce a trend score(?)
+2. output states what trends that are identified, together with what should not be inside the video (discourage) 
+3. plot out a word cloud using matplot
+3a. base idea for word cloud using python: https://www.youtube.com/watch?v=QC6sEwQcqdY or https://www.datacamp.com/tutorial/wordcloud-python
