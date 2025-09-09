@@ -24,8 +24,8 @@ def main():
         # Stage 1: Data Loading and Preprocessing
         print("\n📊 STAGE 1: DATA LOADING AND PREPROCESSING")
         print("-" * 50)
-        
-        df = load_and_preprocess_data('/home/runner/work/GooberAI/GooberAI/Dataset/videos.csv')
+        #C:\Users\axcel\OneDrive\Documents\GitHub\GooberAI\Dataset\videos.csv
+        df = load_and_preprocess_data('Dataset/videos.csv')
         
         # Stage 2: Exploratory Data Analysis
         print("\n📈 STAGE 2: EXPLORATORY DATA ANALYSIS")

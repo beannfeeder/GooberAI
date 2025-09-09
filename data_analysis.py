@@ -212,7 +212,7 @@ def create_visualizations(df, monthly_trends):
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('/home/runner/work/GooberAI/GooberAI/trend_analysis_dashboard.png', dpi=300, bbox_inches='tight')
+    plt.savefig('trend_analysis_dashboard.png', dpi=300, bbox_inches='tight')
     plt.show()
     
     print("Visualizations saved as 'trend_analysis_dashboard.png'")
@@ -222,7 +222,7 @@ def main():
     print("Starting YouTube Video Trend Analysis...")
     
     # Load and preprocess data
-    df = load_and_preprocess_data('/home/runner/work/GooberAI/GooberAI/Dataset/videos.csv')
+    df = load_and_preprocess_data('Dataset/videos.csv')
     
     # Generate basic statistics
     stats = generate_basic_statistics(df)
