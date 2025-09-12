@@ -20,7 +20,7 @@ def simplified_trend_analysis():
     
     # Load and sample data for efficiency
     print("Loading and sampling data...")
-    df = pd.read_csv('/home/runner/work/GooberAI/GooberAI/Dataset/videos.csv')
+    df = pd.read_csv('Dataset/videos.csv')
     
     # Sample 20,000 records for modeling to ensure reasonable execution time
     if len(df) > 20000:
@@ -215,7 +215,7 @@ def simplified_trend_analysis():
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('/home/runner/work/GooberAI/GooberAI/comprehensive_trend_analysis.png', 
+    plt.savefig('comprehensive_trend_analysis.png', 
                 dpi=300, bbox_inches='tight')
     plt.show()
     
