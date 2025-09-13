@@ -118,9 +118,19 @@ def simplified_trend_analysis():
     # 2. Upload frequency
     plt.subplot(3, 4, 2)
     upload_counts = df_sample.groupby(['year', 'month']).size()
-    upload_counts.plot(kind='bar', color='skyblue')
+    # upload_counts.plot(kind='bar', color='skyblue')
+    # plt.title('Video Upload Frequency')
+    # plt.xticks(rotation=45)
+    # plt.grid(True, alpha=0.3)
+    # Create proper date labels for x-axis
+    date_labels = [f"{year}-{month:02d}" for year, month in upload_counts.index]
+    plt.bar(range(len(upload_counts)), upload_counts.values, color='skyblue')
     plt.title('Video Upload Frequency')
-    plt.xticks(rotation=45)
+    # Show only every 3rd label to prevent overcrowding
+    step = max(1, len(date_labels) // 8)  # Show ~8 labels max
+    plt.xticks(range(0, len(date_labels), step), 
+            [date_labels[i] for i in range(0, len(date_labels), step)], 
+            rotation=45, ha='right')
     plt.grid(True, alpha=0.3)
     
     # 3. Engagement distribution
