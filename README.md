@@ -177,6 +177,12 @@ Strategic recommendations for L'Oréal's content strategy and market positioning
 Link: https://www.canva.com/design/DAGysB2BI4w/jRgoxTRaTnYfj8-kw21w9Q/edit?utm_content=DAGysB2BI4w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ---
+
+## 🎨 **Figma**
+
+Link: https://www.figma.com/design/RrpwgDW83TOrMh5s0oxDyY/GooberAI-Prototype?node-id=0-1&p=f&t=d68gCdbLY9jd1yyK-0
+
+---
 ## 👥 **Team: Noog Goobers**
 
 **Mission Accomplished!** We've delivered a complete AI-powered trend identification system that transforms L'Oréal's approach to beauty trend detection and strategic content planning.
