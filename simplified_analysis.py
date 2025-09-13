@@ -14,7 +14,19 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def simplified_trend_analysis():
-    """Run a simplified but comprehensive trend analysis"""
+    """
+    Execute streamlined trend analysis optimized for large datasets.
+    
+    Performs comprehensive YouTube trend analysis with efficient sampling,
+    generates 12-panel visualization dashboard, builds simple prediction model,
+    and provides strategic insights. Designed for fast execution on large datasets.
+    
+    Returns:
+        tuple: (df_sample, model, scaler) containing:
+            - df_sample: Preprocessed sample dataset with engineered features
+            - model: Trained LinearRegression model for trend prediction
+            - scaler: StandardScaler for feature normalization
+    """
     print("🚀 SIMPLIFIED TREND ANALYSIS - OPTIMIZED VERSION")
     print("="*60)
     
@@ -46,6 +58,18 @@ def simplified_trend_analysis():
     
     # Parse duration
     def parse_duration_simple(duration_str):
+        """
+        Parse YouTube duration format with simplified error handling.
+        
+        Converts ISO 8601 duration format to seconds with default fallback values
+        for invalid or missing inputs. Optimized for performance over precision.
+        
+        Args:
+            duration_str (str): YouTube duration string in PT format
+        
+        Returns:
+            int: Duration in seconds, with defaults (60s for invalid, 1s minimum)
+        """
         if pd.isna(duration_str) or duration_str == '':
             return 60  # Default 1 minute
         try:
