@@ -14,7 +14,19 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def simplified_trend_analysis():
-    """Run a simplified but comprehensive trend analysis"""
+    """
+    Execute streamlined trend analysis optimized for large datasets.
+    
+    Performs comprehensive YouTube trend analysis with efficient sampling,
+    generates 12-panel visualization dashboard, builds simple prediction model,
+    and provides strategic insights. Designed for fast execution on large datasets.
+    
+    Returns:
+        tuple: (df_sample, model, scaler) containing:
+            - df_sample: Preprocessed sample dataset with engineered features
+            - model: Trained LinearRegression model for trend prediction
+            - scaler: StandardScaler for feature normalization
+    """
     print("🚀 SIMPLIFIED TREND ANALYSIS - OPTIMIZED VERSION")
     print("="*60)
     
@@ -46,6 +58,18 @@ def simplified_trend_analysis():
     
     # Parse duration
     def parse_duration_simple(duration_str):
+        """
+        Parse YouTube duration format with simplified error handling.
+        
+        Converts ISO 8601 duration format to seconds with default fallback values
+        for invalid or missing inputs. Optimized for performance over precision.
+        
+        Args:
+            duration_str (str): YouTube duration string in PT format
+        
+        Returns:
+            int: Duration in seconds, with defaults (60s for invalid, 1s minimum)
+        """
         if pd.isna(duration_str) or duration_str == '':
             return 60  # Default 1 minute
         try:
@@ -94,9 +118,19 @@ def simplified_trend_analysis():
     # 2. Upload frequency
     plt.subplot(3, 4, 2)
     upload_counts = df_sample.groupby(['year', 'month']).size()
-    upload_counts.plot(kind='bar', color='skyblue')
+    # upload_counts.plot(kind='bar', color='skyblue')
+    # plt.title('Video Upload Frequency')
+    # plt.xticks(rotation=45)
+    # plt.grid(True, alpha=0.3)
+    # Create proper date labels for x-axis
+    date_labels = [f"{year}-{month:02d}" for year, month in upload_counts.index]
+    plt.bar(range(len(upload_counts)), upload_counts.values, color='skyblue')
     plt.title('Video Upload Frequency')
-    plt.xticks(rotation=45)
+    # Show only every 3rd label to prevent overcrowding
+    step = max(1, len(date_labels) // 8)  # Show ~8 labels max
+    plt.xticks(range(0, len(date_labels), step), 
+            [date_labels[i] for i in range(0, len(date_labels), step)], 
+            rotation=45, ha='right')
     plt.grid(True, alpha=0.3)
     
     # 3. Engagement distribution

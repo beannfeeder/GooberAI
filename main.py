@@ -14,7 +14,23 @@ from data_analysis import load_and_preprocess_data, generate_basic_statistics, a
 from ModelCalculator import TrendModelCalculator
 
 def main():
-    """Main analysis pipeline for GooberAI trend identification system"""
+    """
+    Execute comprehensive YouTube trend analysis pipeline.
+    
+    Orchestrates a 6-stage analysis workflow including data preprocessing, exploratory analysis,
+    visualization generation, machine learning modeling, and strategic recommendations.
+    Provides complete trend identification system with performance metrics and insights.
+    
+    Returns:
+        tuple: (df, monthly_trends, stats, view_results) containing:
+            - df: Processed YouTube dataset with engineered features
+            - monthly_trends: Time-series aggregated metrics
+            - stats: Basic statistical summaries
+            - view_results: ML model performance and predictions
+    
+    Raises:
+        SystemExit: If data loading fails or critical errors occur during analysis
+    """
     print("="*80)
     print("🤖 GOOBERAI - TREND IDENTIFICATION SYSTEM")
     print("L'Oréal Datathon 2025 - Noog Goobers Team")

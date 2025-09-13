@@ -12,7 +12,18 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def load_and_preprocess_data(file_path):
-    """Load and preprocess the YouTube video dataset"""
+    """
+    Load and preprocess YouTube video dataset for analysis.
+    Performs data loading, datetime conversion, temporal feature extraction,
+    numeric column cleaning, and creates engagement metrics.
+    
+    Args:
+        file_path (str): Path to CSV file with YouTube video data
+    
+    Returns:
+        pandas.DataFrame: Preprocessed dataset with additional columns:
+            year, month, day_of_week, hour, engagement_score, duration_seconds
+    """
     print("Loading dataset...")
     
     # Load the CSV file
@@ -46,7 +57,18 @@ def load_and_preprocess_data(file_path):
     return df
 
 def parse_duration(duration_str):
-    """Parse YouTube duration format (PT1M30S) to seconds"""
+    """
+    Parse YouTube duration format to seconds.
+    
+    Converts ISO 8601 duration format (PT1H30M45S) used by YouTube API
+    to total seconds. Handles hours, minutes, and seconds components.
+    
+    Args:
+        duration_str (str): YouTube duration string in PT format (e.g., "PT1M30S", "PT2H15M")
+    
+    Returns:
+        int: Duration in seconds, or 0 if parsing fails or input is invalid
+    """
     if pd.isna(duration_str) or duration_str == '':
         return 0
     
@@ -77,7 +99,18 @@ def parse_duration(duration_str):
         return 0
 
 def generate_basic_statistics(df):
-    """Generate basic statistics and insights"""
+    """
+    Generate basic statistics and insights for YouTube video dataset.
+    
+    Prints comprehensive overview including dataset size, date range, channel count,
+    engagement metrics summary, and content statistics like average duration.
+    
+    Args:
+        df (pandas.DataFrame): Preprocessed YouTube video dataset
+    
+    Returns:
+        pandas.DataFrame: Descriptive statistics for engagement metrics
+    """
     print("\n=== BASIC DATASET STATISTICS ===")
     print(f"Total videos: {len(df):,}")
     print(f"Date range: {df['publishedAt'].min()} to {df['publishedAt'].max()}")
@@ -94,7 +127,18 @@ def generate_basic_statistics(df):
     return engagement_stats
 
 def analyze_trends_over_time(df):
-    """Analyze trends over time"""
+    """
+    Analyze temporal trends in YouTube video performance.
+    
+    Groups data by year and month to calculate aggregated metrics including
+    average views, likes, comments, engagement scores, and video counts.
+    
+    Args:
+        df (pandas.DataFrame): Preprocessed YouTube video dataset with temporal features
+    
+    Returns:
+        pandas.DataFrame: Monthly aggregated metrics with columns for average engagement metrics
+    """
     print("\n=== TEMPORAL TREND ANALYSIS ===")
     
     # Monthly trends
@@ -114,7 +158,20 @@ def analyze_trends_over_time(df):
     return monthly_trends
 
 def create_visualizations(df, monthly_trends):
-    """Create comprehensive visualizations"""
+    """
+    Create comprehensive visualizations for YouTube video analysis.
+    
+    Generates a 3x3 dashboard with 9 different plots including trends over time,
+    engagement distributions, posting patterns, and performance correlations.
+    Saves the dashboard as a PNG file.
+    
+    Args:
+        df (pandas.DataFrame): Preprocessed YouTube video dataset
+        monthly_trends (pandas.DataFrame): Monthly aggregated metrics from analyze_trends_over_time
+    
+    Returns:
+        None: Displays plots and saves dashboard as 'trend_analysis_dashboard.png'
+    """
     print("\n=== GENERATING VISUALIZATIONS ===")
     
     # Set up the plotting style
@@ -218,7 +275,18 @@ def create_visualizations(df, monthly_trends):
     print("Visualizations saved as 'trend_analysis_dashboard.png'")
 
 def main():
-    """Main analysis function"""
+    """
+    Execute complete YouTube video trend analysis pipeline.
+    
+    Orchestrates the full analysis workflow including data loading, preprocessing,
+    statistical analysis, trend analysis, and visualization generation.
+    
+    Args:
+        None
+    
+    Returns:
+        tuple: (df, monthly_trends, stats) - processed dataset, monthly metrics, and basic statistics
+    """
     print("Starting YouTube Video Trend Analysis...")
     
     # Load and preprocess data
