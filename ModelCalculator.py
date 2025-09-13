@@ -16,18 +16,47 @@ from datetime import datetime, timedelta
 
 class TrendModelCalculator:
     """
-    A class to calculate and predict trends in YouTube video data
+    Calculate and predict trends in YouTube video performance data.
+    
+    This class provides comprehensive trend analysis capabilities including feature engineering,
+    machine learning model training, and prediction generation for YouTube video metrics.
+    Supports multiple algorithms and handles temporal patterns, channel-specific trends,
+    and content characteristics.
+    
+    Attributes:
+        data (pandas.DataFrame): Copy of input dataset with engineered features
+        models (dict): Trained machine learning models for different prediction tasks
+        scalers (dict): Feature scaling objects for model preprocessing
+        predictions (dict): Generated predictions and model outputs
+        test_data (dict): Test dataset information for model evaluation
     """
     
     def __init__(self, data):
-        """Initialize with preprocessed data"""
+        """
+        Initialize TrendModelCalculator with preprocessed YouTube video data.
+        Creates a copy of the input data and initializes storage for models,
+        scalers, and predictions.
+        
+        Args:
+            data (pandas.DataFrame): Preprocessed YouTube video dataset with required columns
+                                   including publishedAt, viewCount, engagement_score, etc.
+        """
         self.data = data.copy()
         self.models = {}
         self.scalers = {}
         self.predictions = {}
         
     def prepare_features(self):
-        """Prepare features for trend modeling"""
+        """
+        Prepare engineered features for trend modeling.
+        
+        Creates time-based features, cyclical encodings for temporal patterns,
+        duration categories, and language encodings. Transforms categorical
+        variables into dummy variables for machine learning compatibility.
+        
+        Returns:
+            None: Modifies self.data in place by adding engineered features
+        """
         print("Preparing features for trend modeling...")
         
         # Create time-based features
@@ -57,7 +86,16 @@ class TrendModelCalculator:
         print("Feature preparation completed.")
         
     def create_trend_features(self):
-        """Create trend-specific features"""
+        """
+        Create trend-specific features using rolling statistics and global patterns.
+        
+        Generates channel-level historical averages, video sequence numbers,
+        and global trend indicators. Computes expanding window statistics
+        for each channel to capture performance evolution over time.
+        
+        Returns:
+            None: Modifies self.data in place by adding trend-based features
+        """
         print("Creating trend-specific features...")
         
         # Rolling averages for trend detection
@@ -93,7 +131,16 @@ class TrendModelCalculator:
         print("Trend features created.")
         
     def build_view_prediction_model(self):
-        """Build a model to predict view counts"""
+        """
+        Build and train machine learning models to predict video view counts.
+        
+        Trains multiple algorithms (Linear Regression, Random Forest) on engineered features,
+        applies feature scaling, and evaluates model performance using MSE and R² metrics.
+        Uses log transformation to handle view count skewness.
+        
+        Returns:
+            dict: Model results containing trained models, performance metrics, and predictions
+        """
         print("Building view prediction model...")
         
         # Select features for modeling
